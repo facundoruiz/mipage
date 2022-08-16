@@ -1,0 +1,15 @@
+ body,
+ html {
+
+     margin: 0;
+     padding: 0;
+     text-align: center;
+ }
+
+
+
+ .contenido {
+     width: 340px;
+     margin: 0 auto;
+
+ }
