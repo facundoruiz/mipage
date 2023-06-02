@@ -29,12 +29,12 @@ module.exports = {
          	title: 'PRUEBA',
              hash: true,
          	filename: '../index.html',
-         	template: 'src/template.html'
+         	template: 'src/index.html'
          }),
          new HtmlWebpackPlugin({
             title: 'INGRESO',
             filename: '../login.html',
-            template: 'src/template.html'
+            template: 'src/login.html'
         }),
         new HtmlWebpackPlugin({
             title: 'Registrar',
