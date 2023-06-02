@@ -216,17 +216,7 @@ if ('function' === typeof importScripts) {
          workbox.core.clientsClaim();*/
 
 
-        /**
-         * se ejecuta en segundo plano, y llama a asyncRemitos
-         */
-        //         self.addEventListener('sync', function(event) {
-        //             console.log("sync event", event);
-        //             if (event.tag === 'syncRemitos') {
-        //                 event.waitUntil(syncRemitos()); // sending sync request
-        //             }
-        //         });
-
-
+       
 
 
 

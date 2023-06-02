@@ -9,7 +9,7 @@ module.exports = {
         '../../serverwork': './src/sw.js',  
     },
      output: {
-        path: path.resolve(__dirname, 'dist/assets'),
+        path: path.resolve(__dirname, 'docs/assets'),
         filename: 'js/[name].js',
     },
     module: {
@@ -27,10 +27,15 @@ module.exports = {
         })
          ,
          new HtmlWebpackPlugin({
-         	title: 'TEMPLATE',
+         	title: 'INICIO',
          	filename: '../index.html',
          	template: 'src/template.html'
          }),
+         new HtmlWebpackPlugin({
+            title: 'Fuera de Servicio',
+            filename: '../offline.html',
+            template: 'src/offline.html'
+        }),
     ],
     resolve:{
         extensions:['.js']

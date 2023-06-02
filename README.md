@@ -3,8 +3,8 @@
 ## Install
 > `npm install`
 
-## Para compilar 
-> `npm run build` 
+## Para compilar  build -> produccion 
+> `npm run dev` 
 
 
 ## Paquetes dependencies

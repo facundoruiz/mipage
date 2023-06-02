@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //extrae css
 module.exports = {
     entry: { 
         app: './src/index.js',
-        '../../../serverwork': './src/sw.js',     
+        '../../serverwork': './src/sw.js',     
     },
      output: {
         path: path.resolve(__dirname, 'dist/assets'),
@@ -27,9 +27,25 @@ module.exports = {
          ,
          new HtmlWebpackPlugin({
          	title: 'PRUEBA',
-         	filename: 'index.html',
+             hash: true,
+         	filename: '../index.html',
          	template: 'src/template.html'
          }),
+         new HtmlWebpackPlugin({
+            title: 'INGRESO',
+            filename: '../login.html',
+            template: 'src/template.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Registrar',
+            filename: '../registrar.html',
+            template: 'src/registro.html'
+        }),
+         new HtmlWebpackPlugin({
+            title: 'Fuera de Servicio',
+            filename: '../offline.html',
+            template: 'src/offline.html'
+        }),
     ],
     resolve:{
         extensions:['.js']
