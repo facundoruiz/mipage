@@ -1,4 +1,16 @@
-import './front.css';
+// Import our custom CSS
+import './scss/styles.scss';
+
+// Import only the Bootstrap components we need
+import { Popover } from 'bootstrap';
+
+// Create an example popover
+document.querySelectorAll('[data-bs-toggle="popover"]')
+  .forEach(popover => {
+    new Popover(popover)
+  })
+
+
 import {
     onGetTasks,
     saveTask,
@@ -6,13 +18,11 @@ import {
     getTask,
     updateTask,
     getTasks,
-  } from "./fire-store.js";
-  import {
-    checkAuthState,
+     checkAuthState,
 userSignUp,
 userSignIn,
     userSignOut,
-  } from "./fire-auth.js";
+  } from "./firebase.js";
 
 // ------- serviceWorker
 if ('serviceWorker' in navigator) {
@@ -42,11 +52,11 @@ window.addEventListener("DOMContentLoaded", async (e) => {
     const signInButton = document.querySelector("#signInButton");
     const signOutButton = document.querySelector("#signOutButton");
 
+    signUpButton.addEventListener('click', userSignUp);
+signInButton.addEventListener('click', userSignIn);
+signOutButton.addEventListener('click', userSignOut);
 })
 
 
 
 
-signUpButton.addEventListener('click', userSignUp);
-signInButton.addEventListener('click', userSignIn);
-signOutButton.addEventListener('click', userSignOut);

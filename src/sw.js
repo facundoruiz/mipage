@@ -1,12 +1,14 @@
 if ('function' === typeof importScripts) {
-
-    importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
-
+    importScripts(
+        'https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js'
+      );
     if (workbox) {
 
-            self.addEventListener('install', function(event) {
+
+
+            self.addEventListener('install', (event) => {
             event.waitUntil(
-                caches.open('page-cache').then(function(cache) {
+                caches.open('htc-lite_v1').then((cache) => {
                     return cache.addAll(
                         [
                             '/',
