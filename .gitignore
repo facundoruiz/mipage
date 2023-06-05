@@ -2,3 +2,4 @@
 node_modules/
 dist/
 serverwork.js
+.env
