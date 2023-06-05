@@ -3,26 +3,16 @@ import './scss/styles.scss';
 
 // Import only the Bootstrap components we need
 import { Popover } from 'bootstrap';
+import { auth,db } from "./firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { getDocs, collection } from "firebase/firestore"
+import { loginCheck } from "./check.js";
+import './auth.js'
 
-// Create an example popover
-document.querySelectorAll('[data-bs-toggle="popover"]')
-  .forEach(popover => {
-    new Popover(popover)
-  })
-
-
-import {
-    onGetTasks,
-    saveTask,
-    deleteTask,
-    getTask,
-    updateTask,
-    getTasks,
-     checkAuthState,
-userSignUp,
-userSignIn,
-    userSignOut,
-  } from "./firebase.js";
+// script de de uso frecuente
+import './logout.js'
+import './dashboard.js'
+import { showTaks } from "./taks/takList.js";
 
 // ------- serviceWorker
 if ('serviceWorker' in navigator) {
@@ -41,22 +31,13 @@ if ('serviceWorker' in navigator) {
 
 
 
-window.addEventListener("DOMContentLoaded", async (e) => {
-
-    checkAuthState();
-    const userEmail = document.querySelector("#userEmail");
-    const userPassword = document.querySelector("#userPassword");
-    const authForm = document.querySelector("#authForm");
-    const secretContent = document.querySelector("#secretContent");
-    const signUpButton = document.querySelector("#signUpButton");
-    const signInButton = document.querySelector("#signInButton");
-    const signOutButton = document.querySelector("#signOutButton");
-
-    signUpButton.addEventListener('click', userSignUp);
-signInButton.addEventListener('click', userSignIn);
-signOutButton.addEventListener('click', userSignOut);
-})
 
 
-
+// list for auth state changes
+onAuthStateChanged(auth, async (user) => {
+  loginCheck(user);
+  if (user) {
+    
+  } 
+});
 

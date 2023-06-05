@@ -3,7 +3,17 @@ const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require("html-webpack-plugin"); 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //extrae css
 
+const webpack = require('webpack')
+const dotenv = require('dotenv')
+
+const env = dotenv.config().parsed
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next])
+  return prev
+}, {})
+
 module.exports = {
+  mode: "development",
     entry: { 
         app: './src/index.js',
         '../../serverwork': './src/sw.js',     
@@ -45,10 +55,12 @@ module.exports = {
                     loader: 'sass-loader'
                   }
                 ]
-                }
+              }
         ],
     },
     plugins: [
+        new webpack.DefinePlugin(envKeys),
+
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
         })
@@ -57,13 +69,10 @@ module.exports = {
          	title: 'PRUEBA',
              hash: true,
          	filename: '../index.html',
-         	template: 'src/index.html'
+          template: 'src/index.html'
+       //  	template: 'src/template.html'
          }),
-         new HtmlWebpackPlugin({
-            title: 'INGRESO',
-            filename: '../login.html',
-            template: 'src/login.html'
-        }),
+     
         new HtmlWebpackPlugin({
             title: 'Registrar',
             filename: '../registrar.html',
@@ -77,5 +86,12 @@ module.exports = {
     ],
     resolve:{
         extensions:['.js']
-    }
+    },
+    devServer: {
+        static: {
+          directory: path.join(__dirname, 'dist'),
+        },
+        compress: true,
+        port: 9000,
+      },
 }    

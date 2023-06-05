@@ -11,8 +11,8 @@ if ('function' === typeof importScripts) {
                 caches.open('htc-lite_v1').then((cache) => {
                     return cache.addAll(
                         [
-                            '/',
-                            '/offline.html',
+                            './',
+                            './offline.html',
                          
                         ]
                     );
