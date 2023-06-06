@@ -1,6 +1,6 @@
 import { auth,db } from "./firebase.js";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore, doc, getDoc , setDoc ,serverTimestamp  } from "firebase/firestore"
+import {  doc, getDoc , setDoc ,serverTimestamp  } from "firebase/firestore"
 import { showMessage } from "./showMessage.js";
 
 
@@ -51,6 +51,7 @@ googleButton.addEventListener("click", async (e) => {
 
   // show welcome message
   showMessage("¡Bienvenido! " + user.displayName);
+  window.location.href = "/";
 }
    
 catch (error) {

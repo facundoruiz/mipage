@@ -2,17 +2,16 @@
 import './scss/styles.scss';
 
 // Import only the Bootstrap components we need
-import { Popover } from 'bootstrap';
-import { auth,db } from "./firebase.js";
+
+import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
-import { getDocs, collection } from "firebase/firestore"
 import { loginCheck } from "./check.js";
 import './auth.js'
 
 // script de de uso frecuente
 import './logout.js'
 import './dashboard.js'
-import { showTaks } from "./taks/takList.js";
+import {showTareas} from  './taks/takList.js'
 
 // ------- serviceWorker
 if ('serviceWorker' in navigator) {
@@ -37,7 +36,7 @@ if ('serviceWorker' in navigator) {
 onAuthStateChanged(auth, async (user) => {
   loginCheck(user);
   if (user) {
-    
+    showTareas()
   } 
 });
 

@@ -1,5 +1,5 @@
 import { auth,db } from "../firebase.js";
-import {   getFirestore,
+import {   
     collection,
     getDocs,
     onSnapshot,
@@ -9,18 +9,14 @@ import {   getFirestore,
     getDoc,
     updateDoc,serverTimestamp } from "firebase/firestore"
     
-
-
     const coleccion = "taks"
 
 export const saveTask = async (estado,lugar,tak) =>
 {
     //addDoc(collection(db, coleccion), { estado,lugar,tak,uid ,serverTimestamp()});
-    try {
-
+   try {
+       const user = auth.currentUser;
       // Obtener el usuario autenticado actualmente
-const user = auth().currentUser;
-console.log(user);
       const docRef = await addDoc(collection(db, coleccion), {
         estado: estado,
         lugar: lugar,
@@ -28,22 +24,35 @@ console.log(user);
         uid: user.uid,
         createdAt: serverTimestamp()
       });
-      console.log("Documento guardado con ID:", docRef.id);
+
+    return docRef.id ;
+      
     } catch (error) {
       console.error("Error al guardar el documento:", error);
+      return false;
     }
   };
+    
   
-  
-  
-  
-  
-  
-  
-  
+export const onGetTasks = (callback) => {
+  onSnapshot(collection(db, coleccion), async (querySnapshot) => {
+    const tasks = [];
+    for (const docu of querySnapshot.docs) {
+      const task = docu.data();
+      const userId = task.uid;
+      const userRef = doc(db, "users", userId);
+      const userSnapshot = await getDoc(userRef);
+    
 
-export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, coleccion), callback);
+      if (userSnapshot.exists()) { // Verificar si el snapshot del usuario existe antes de acceder a sus datos
+        const userData = userSnapshot.data();
+        tasks.push({ ...task, user: userData });
+      }
+      
+    }
+    callback(tasks);
+  });
+};
 
 /**
  *
