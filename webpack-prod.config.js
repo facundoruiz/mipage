@@ -2,7 +2,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); //extrae css
-
+/*
 const webpack = require('webpack')
 const dotenv = require('dotenv')
 
@@ -10,7 +10,7 @@ const env = dotenv.config().parsed
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next])
   return prev
-}, {})
+}, {})*/
 
 module.exports = {
   mode: "production",
@@ -67,7 +67,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin(envKeys),
+   // new webpack.DefinePlugin(envKeys),
 
     new MiniCssExtractPlugin({
       filename: 'css/[name].min.css'
