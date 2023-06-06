@@ -10,7 +10,7 @@ logout.addEventListener("click", async (e) => {
   try {
     await signOut(auth)
     showMessage("Saliste!");
-    window.location.href = "/";
+    window.location.href = "./";
   } catch (error) {
     showMessage("Ocurrio un error" + error,error);
   }

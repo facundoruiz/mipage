@@ -51,7 +51,7 @@ googleButton.addEventListener("click", async (e) => {
 
   // show welcome message
   showMessage("¡Bienvenido! " + user.displayName);
-  window.location.href = "/";
+  window.location.href = "./";
 }
    
 catch (error) {
