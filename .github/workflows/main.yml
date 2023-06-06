@@ -22,7 +22,9 @@ jobs:
         run: |
           yarn autoclean
           yarn build
-
+        env:
+          FIRESTONE_CONFIG: ${{ secrets.FIRESTONE_CONFIG }}
+        
       - name: Deploy to GH Page
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
