@@ -31,10 +31,7 @@ module.exports = {
           filename: 'icons/[hash].svg'
         }
       },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      },
+      
       {
         test: /\.(scss)$/,
         use: [{
@@ -63,6 +60,9 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
+      },{
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       }
     ],
   },
