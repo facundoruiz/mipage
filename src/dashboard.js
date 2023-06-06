@@ -1,22 +1,22 @@
 /**
  * Script de usos freguntes
  */
-import { Popover } from 'bootstrap';
+import {
+  Popover
+} from 'bootstrap';
 import './color-modes.js'
 
 (() => {
-  'use strict'
+    'use strict'
 
-  document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
-    document.querySelector('.offcanvas-collapse').classList.toggle('open')
-  })
-
-
-  // Create an example popover
-  document.querySelectorAll('[data-bs-toggle="popover"]')
-    .forEach(popover => {
-      new Popover(popover)
+    document.querySelector('#navbarSideCollapse').addEventListener('click', () => {
+      document.querySelector('.offcanvas-collapse').classList.toggle('open')
     })
 
-   
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    
+  
+
 })()

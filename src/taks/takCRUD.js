@@ -7,7 +7,7 @@ import {
     deleteDoc,
     doc,
     getDoc,
-    updateDoc,serverTimestamp } from "firebase/firestore"
+    updateDoc,serverTimestamp,limit,where,query,orderBy } from "firebase/firestore"
     
     const coleccion = "taks"
 
@@ -35,7 +35,10 @@ export const saveTask = async (estado,lugar,tak) =>
     
   
 export const onGetTasks = (callback) => {
-  onSnapshot(collection(db, coleccion), async (querySnapshot) => {
+  // Crear una consulta para obtener los últimos 10 taks ordenados por createdAt de forma descendente
+const queryTareas = query(collection(db, coleccion), orderBy("createdAt", "desc"), limit(10));
+
+  onSnapshot(queryTareas, async (querySnapshot) => {
     const tasks = [];
     for (const docu of querySnapshot.docs) {
       const task = docu.data();
