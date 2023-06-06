@@ -21,6 +21,7 @@ jobs:
       - name: Build
         run: |
           yarn autoclean
+          FIRESTONE_CONFIG = $FIRESTONE_CONFIG
           yarn build
         env:
           FIRESTONE_CONFIG: ${{ secrets.FIRESTONE_CONFIG }}
@@ -30,3 +31,5 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
+        env:
+            FIRESTONE_CONFIG: ${{ secrets.FIRESTONE_CONFIG }}  
