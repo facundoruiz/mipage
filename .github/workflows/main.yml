@@ -21,7 +21,7 @@ jobs:
       - name: Build
         run: |
           yarn autoclean
-          FIRESTONE_CONFIG = $FIRESTONE_CONFIG
+          FIRESTONE_CONFIG=$FIRESTONE_CONFIG
           yarn build
         env:
           FIRESTONE_CONFIG: ${{ secrets.FIRESTONE_CONFIG }}
