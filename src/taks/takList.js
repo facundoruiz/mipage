@@ -18,7 +18,7 @@ export const showTareas = () => {
 
       // Convertir el campo createdAt a una fecha legible
       //  const createdAt = new Date(taks.createdAt.seconds * 1000); // Multiplicar por 1000 para convertir a milisegundos
-      const createdAt = getTimeAgo(taks.createdAt.seconds* 1000);
+      const createdAt = getTimeAgo(taks.createdAt.seconds * 1000);
       const li = `
       <div class="d-flex text-body-secondary pt-3">
         <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
@@ -41,6 +41,9 @@ export const showTareas = () => {
     });
     postList.innerHTML = html;
   });
+
+
+  
 }
 
 
@@ -53,9 +56,9 @@ const btnAddTak = document.querySelector("#save-tak");
 // Función para cuando hagan click en boton y  autenticar con Google y guardar el usuario en Firestore
 //btnAddTak.addEventListener("click", async (e) => {
 taskForm.addEventListener("submit", async (e) => {
-  
-  
 
+
+e.preventDefault();
   const lugar = taskForm["lugar"];
   const estado = 1;
   const tak = taskForm["tarea"]
@@ -64,6 +67,7 @@ taskForm.addEventListener("submit", async (e) => {
     taskForm.reset();
     lugar.focus();
     showMessage("Tarea Guardada!");
+    window.location.href = "./";
   } else {
     showMessage(" tareasa  Ree", error);
   }
