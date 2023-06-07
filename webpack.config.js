@@ -16,7 +16,8 @@ module.exports = {
   mode: "development",
     entry: { 
         app: './src/index.js',
-        '../../serverwork': './src/sw.js',     
+      //  '../../serverwork': './src/sw.js',     
+       '../../service-worker': './src/sw2.js',   
     },
      output: {
         path: path.resolve(__dirname, 'dist/assets'),
@@ -67,7 +68,7 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin(envKeys),
-
+    
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css'
         })

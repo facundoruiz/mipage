@@ -52,10 +52,9 @@ googleButton.addEventListener("click", async (e) => {
   // show welcome message
   showMessage("¡Bienvenido! " + user.displayName);
   window.location.href = "./";
-}
-   
-catch (error) {
+}catch (error) {
     console.log(error);
+    showMessage("Okurrio un erorr " ,error);
   }
 });
 

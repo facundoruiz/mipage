@@ -19,3 +19,4 @@
 
 ## Visto en 
 https://github.com/fazt/firebase-auth-example/blob/master/src/main.js
+https://platzi.com/tutoriales/2118-react-hooks/8661-como-usar-variables-de-entorno-en-el-proyecto-platzi-conf-merch-localmente-y-en-produccion/
