@@ -18,7 +18,7 @@ export const showTareas = () => {
 
       // Convertir el campo createdAt a una fecha legible
       //  const createdAt = new Date(taks.createdAt.seconds * 1000); // Multiplicar por 1000 para convertir a milisegundos
-      const createdAt = getTimeAgo(taks.createdAt.seconds * 1000);
+      const createdAt = getTimeAgo(taks.createdAt);
       const li = `
       <div class="d-flex text-body-secondary pt-3">
         <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
@@ -67,7 +67,7 @@ e.preventDefault();
     taskForm.reset();
     lugar.focus();
     showMessage("Tarea Guardada!");
-    window.location.href = "./";
+    //window.location.href = "./";
   } else {
     showMessage(" tareasa  Ree", error);
   }
@@ -81,28 +81,31 @@ const DATE_UNITS = {
   hour: 3600,
   minute: 60,
   second: 1
-}
+};
 
-const getSecondsDiff = timestamp => (Date.now() - timestamp) / 1000
-const getUnitAndValueDate = (secondsElapsed) => {
+const getSecondsDiff = timestamp => {
+  const now = new Date();
+  const timestampDate = timestamp instanceof Date ? timestamp : timestamp.toDate();
+  return (now.getTime() - timestampDate.getTime()) / 1000;
+};
+
+
+const getUnitAndValueDate = secondsElapsed => {
   for (const [unit, secondsInUnit] of Object.entries(DATE_UNITS)) {
     if (secondsElapsed >= secondsInUnit || unit === "second") {
-      const value = Math.floor(secondsElapsed / secondsInUnit) * -1
-      return {
-        value,
-        unit
-      }
+      const value = Math.floor(secondsElapsed / secondsInUnit) * -1;
+      return { value, unit };
     }
   }
-}
+};
 
 const getTimeAgo = timestamp => {
-  const rtf = new Intl.RelativeTimeFormat()
+  if (!timestamp) {
+    return 'recien';
+  }
+  const rtf = new Intl.RelativeTimeFormat();
 
-  const secondsElapsed = getSecondsDiff(timestamp)
-  const {
-    value,
-    unit
-  } = getUnitAndValueDate(secondsElapsed)
-  return rtf.format(value, unit)
-}
+  const secondsElapsed = getSecondsDiff(timestamp);
+  const { value, unit } = getUnitAndValueDate(secondsElapsed);
+  return rtf.format(value, unit);
+};
