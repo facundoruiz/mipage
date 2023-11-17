@@ -4,7 +4,7 @@ import {
 } from "./takCRUD.js"
 import {
   showMessage
-} from "../showMessage.js";
+} from "./../vendor/showMessage.js";
 
 export const showTareas = () => {
 

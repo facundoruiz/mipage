@@ -17,7 +17,7 @@ module.exports = {
     entry: { 
         app: './src/index.js',
       //  '../../serverwork': './src/sw.js',     
-       '../../service-worker': './src/sw2.js',   
+       '../../service-worker': './src/vendor/sw2.js',   
     },
      output: {
         path: path.resolve(__dirname, 'dist/assets'),
@@ -96,10 +96,9 @@ module.exports = {
         extensions:['.js']
     },
     devServer: {
-        static: {
-          directory: path.join(__dirname, 'dist'),
-        },
+        static:  path.resolve(__dirname, 'dist'),
         compress: true,
         port: 9000,
+        hot:true
       },
 }    
