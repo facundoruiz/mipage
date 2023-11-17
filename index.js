@@ -3,34 +3,17 @@ import './scss/styles.scss';
 
 // Import only the Bootstrap components we need
 
-import { auth } from "./firebase.js";
+import { auth } from "./vendor/firebase.js";
 import { onAuthStateChanged } from "firebase/auth";
-import { loginCheck } from "./check.js";
-import './auth.js'
+import { loginCheck } from "./vendor/check.js";
+import './auth/auth.js'
 
 // script de de uso frecuente
-import './logout.js'
-import './dashboard.js'
+import './auth/logout.js'
+import './dashboard/dashboard.js'
 import {showTareas} from  './taks/takList.js'
-import './notify.js'
-// ------- serviceWorker
-/*
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('serverwork.js').then(reg => {
-                console.log('Registration successful', reg);
-                // registerNotification();
-            })
-            .catch(e => console.error('Error during service worker registration:', e));
-    });
+import './vendor/notify.js'
 
-    
-
-
-} else {
-    console.warn('Service Worker is not supported');
-}
-*/
 // Evento 'DOMContentLoaded' para asegurar que el DOM ha sido cargado
 document.addEventListener('DOMContentLoaded', () => {
   // Tu código JavaScript aquí

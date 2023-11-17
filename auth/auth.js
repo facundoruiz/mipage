@@ -1,7 +1,7 @@
-import { auth,db } from "./firebase.js";
+import { auth,db } from "./../vendor/firebase.js";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import {  doc, getDoc , setDoc ,serverTimestamp  } from "firebase/firestore"
-import { showMessage } from "./showMessage.js";
+import { showMessage } from "./../vendor/showMessage.js";
 
 
 

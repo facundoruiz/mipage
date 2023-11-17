@@ -1,4 +1,4 @@
-import { app } from "./firebase.js";
+import { app } from "./../vendor/firebase.js";
 import { getMessaging,
    //getToken,
     onMessage } from 'firebase/messaging';

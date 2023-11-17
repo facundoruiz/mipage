@@ -4,7 +4,7 @@
 import {
   Popover
 } from 'bootstrap';
-import './color-modes.js'
+import './../vendor/color-modes'
 
 (() => {
     'use strict'

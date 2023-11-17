@@ -1,8 +1,8 @@
 import { signOut } from "firebase/auth";
-import { auth } from "./firebase.js";
+import { auth } from "./../vendor/firebase.js";
 import {
   showMessage
-} from "./showMessage.js";
+} from "./../vendor/showMessage.js";
 const logout = document.querySelector("#logout");
 
 logout.addEventListener("click", async (e) => {
