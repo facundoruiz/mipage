@@ -16,7 +16,7 @@ module.exports = {
   mode: "production",
   entry: {
     app: './src/index.js',
-    '../../serverwork': './src/sw.js',
+    '../../serverwork': './src/vendor/sw2.js',
   },
   output: {
     path: path.resolve(__dirname, 'docs/assets'),
